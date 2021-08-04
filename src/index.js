@@ -16,23 +16,24 @@ app.get("/info", (req, res, next) => {
 });
 
 app.use(
-  "/api",
+  "/",
   createProxyMiddleware({
     logLevel: "debug",
     //target: "https://jsonplaceholder.typicode.com",
-    target: "https://www.uol.com.br",
+    target: "https://docs.google.com",
     changeOrigin: true,
     selfHandleResponse: true,
     pathRewrite: {
       [`^/api`]: ""
     },
-
+/*
     onProxyRes: responseInterceptor(
       async (responseBuffer, proxyRes, req, res) => {
         const response = responseBuffer.toString("utf8"); // convert buffer to string
         return response.replace(/bolsonaro/gi, "Bozo"); // manipulate response and return the result
       }
     ),
+    */
     onProxyReq: async (proxyRes, req, res) => {}
   })
 );
