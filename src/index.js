@@ -41,12 +41,13 @@ app.use(
     
 
     onProxyReq:  (proxyReq, req, res)=> {
+      /*
       proxyReq.setHeader("referrerPolicy", "strict-origin-when-cross-origin");
       proxyReq.setHeader("body", "null");
       proxyReq.setHeader("credentials", "omit");
       proxyReq.setHeader('mode', 'cors');
       proxyReq.setHeader('host', 'docs.google.com');
-
+*/
     },
 
     onError:(err, req, res, target)=>{
