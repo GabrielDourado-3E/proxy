@@ -24,6 +24,7 @@ app.use(
     changeOrigin: true,
     selfHandleResponse: true,
     autoRewrite : true,
+    followRedirects : true,
     pathRewrite: {
       [`^/api`]: ""
     },
