@@ -41,6 +41,7 @@ app.use(
       proxyReq.setHeader("body", "null");
       proxyReq.setHeader("credentials", "omit");
       proxyReq.setHeader('mode', 'cors');
+      console.log(proxyReq.headers);
     }
   })
 );
