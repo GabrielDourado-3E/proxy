@@ -36,7 +36,7 @@ app.use(
       }
     ),
     */
-    onProxyReq:  (proxyRes, req, res) => {
+    onProxyReq: function (proxyRes, req, res) {
       proxyReq.setHeader("referrerPolicy", "strict-origin-when-cross-origin");
       proxyReq.setHeader("body", "null");
       proxyReq.setHeader("credentials", "omit");
