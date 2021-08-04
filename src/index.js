@@ -2,7 +2,8 @@ const express = require("express");
 const morgan = require("morgan");
 const {
   createProxyMiddleware,
-  responseInterceptor
+  responseInterceptor,
+  
 } = require("http-proxy-middleware");
 
 const app = express();
@@ -20,9 +21,9 @@ app.use(
   createProxyMiddleware({
     logLevel: "debug",
     //target: "https://jsonplaceholder.typicode.com",
-    target: "https://docs.google.com",
+    target: {host:"docs.google.com", port:443, protocol:"https:", },
     changeOrigin: true,
-    selfHandleResponse: true,
+    //selfHandleResponse: true,
     autoRewrite : true,
     followRedirects : true,
     pathRewrite: {
@@ -36,12 +37,20 @@ app.use(
       }
     ),
     */
+
+    
+
     onProxyReq:  (proxyReq, req, res)=> {
       proxyReq.setHeader("referrerPolicy", "strict-origin-when-cross-origin");
       proxyReq.setHeader("body", "null");
       proxyReq.setHeader("credentials", "omit");
       proxyReq.setHeader('mode', 'cors');
-      console.log(proxyReq.headers);
+      proxyReq.setHeader('host', 'docs.google.com');
+
+    },
+
+    onError:(err, req, res, target)=>{
+      console.log(err);
     }
   })
 );
