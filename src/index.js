@@ -23,6 +23,7 @@ app.use(
     target: "https://docs.google.com",
     changeOrigin: true,
     selfHandleResponse: true,
+    autoRewrite : true,
     pathRewrite: {
       [`^/api`]: ""
     },
